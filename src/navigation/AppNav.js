@@ -3,9 +3,14 @@ import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext.js";
 import AuthStack from "./AuthStack.js";
 import { NavigationContainer } from "@react-navigation/native";
+import Loader from "../components/Loader.js";
 
 const AppNav = () => {
-  const { userToken } = useContext(AuthContext);
+  const { userToken, isLoading } = useContext(AuthContext);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <NavigationContainer>
